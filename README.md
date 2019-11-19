@@ -13,13 +13,13 @@ The idea for this project is comparing tourist count versus local population cou
 
 ## Inspiration
 [Minimum Wage](https://public.tableau.com/en-us/gallery/us-workers-or-below-minimum-wage?gallery=votd)
-![First Inspiration](./Resources/images/inspiration1.png =2x)
+![First Inspiration](./Resources/images/inspiration1.png =500x)
 
 [Refugee Admissions](https://public.tableau.com/profile/tc1115#!/vizhome/U_S_RefugeeAdmissionsProgramFY2009-2018/U_S_Refugees)
-![Second Inspiration](./Resources/images/inspiration2.png =2x)
+![Second Inspiration](./Resources/images/inspiration2.png =500x)
 }
 
 [Human Migration](https://public.tableau.com/en-us/gallery/flow-human-migration)
-![Third Inspiration](./Resources/images/inspiration3.png =2x)
+![Third Inspiration](./Resources/images/inspiration3.png =500x)
    <!-- - A sketch of the final design
    - A link to the primary GitHub repository you’ll be housing your work in -->
