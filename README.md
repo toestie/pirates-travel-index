@@ -7,21 +7,19 @@
 ![TouristBanner](./Resources/images/banner.jpg)
 
 # Project Proposal
-The idea for this project is comparing tourist count versus local population count through the years 2011 - 2017. There is no one particular data set that has all the data that we are interested, so we will curate and compile data from multiple sources into one database that has everything we want by using ETL (extract, transform, load.
+The idea for this project is comparing tourist count versus local population count through the years 2011 - 2017. There is no one particular data set that has all the data that we are interested, so we will curate and compile data from multiple sources into one database that has everything we want by using ETL (extract, transform, load).
 
-### Data Sources (Extract):
-* City Population (as gotten from CSVs on http://worldpopulationreview.com/)
-* Number of International Visitors per city (as gotten from pdfs from MasterCard Index of Global Destination Cities; https://newsroom.mastercard.com/press-releases/bangkok-tops-mastercards-global-destination-cities-index-for-the-fourth-consecutive-year/)
+   <!-- - A link to your dataset(s) and a screenshot of the metadata if it exists. -->
 
-### Cleaning and Aggregation (Transform):
-All data will be linked by city name.
+## Inspiration
+[Minimum Wage](https://public.tableau.com/en-us/gallery/us-workers-or-below-minimum-wage?gallery=votd)
+![First Inspiration](./Resources/images/inspiration1.png)
 
-City population can be scraped by finding the city page on the website, downloading the CSV with the CSV button, and uploaded into postgresSQL tables.
+[Refugee Admissions](https://public.tableau.com/profile/tc1115#!/vizhome/U_S_RefugeeAdmissionsProgramFY2009-2018/U_S_Refugees)
+![Second Inspiration](./Resources/images/inspiration2.png)
 
-The pdfs for international visitor counts was a little bit more difficult to parse through (as the information is in pdfs). The information can be pasted into Excel, a short macro executed to make the desired table, then saved as a csv to be uploaded into postgresSQL tables.
+[Human Migration](https://public.tableau.com/en-us/gallery/flow-human-migration)
+![Third Inspiration](./Resources/images/inspiration3.png)
 
-### Compiled Data (Load):
-All of the data can then be linked by city names for a table showing:
-* City Name
-* Population Count
-* International Visitor Count
+   <!-- - A sketch of the final design
+   - A link to the primary GitHub repository you’ll be housing your work in -->
