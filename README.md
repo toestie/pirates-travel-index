@@ -7,19 +7,18 @@
 ![TouristBanner](./Resources/images/banner.jpg)
 
 # Project Proposal
-The idea for this project is comparing tourist count versus local population count through the years 2011 - 2017. There is no one particular data set that has all the data that we are interested, so we will curate and compile data from multiple sources into one database that has everything we want by using ETL (extract, transform, load).
+The idea for this project is visualize tourism change for cities/countries over time. We will also test to see if there is a correlation between different indexes (ie happiness score, freedom score, and generosity score) and the cities' popularity with tourists. 
 
    <!-- - A link to your dataset(s) and a screenshot of the metadata if it exists. -->
 
-## Inspiration
-[Minimum Wage](https://public.tableau.com/en-us/gallery/us-workers-or-below-minimum-wage?gallery=votd)
-![First Inspiration](./Resources/images/inspiration1.png)
+https://github.com/toestie/pirates-travel-index/tree/master/data
+https://data.world/laurel/world-happiness-report-data
+https://data.worldbank.org/indicator/ST.INT.ARVL
+https://newsroom.mastercard.com/wp-content/uploads/2019/09/GDCI-Global-Report-FINAL-1.pdf
 
-[Refugee Admissions](https://public.tableau.com/profile/tc1115#!/vizhome/U_S_RefugeeAdmissionsProgramFY2009-2018/U_S_Refugees)
-![Second Inspiration](./Resources/images/inspiration2.png)
-}
 
-[Human Migration](https://public.tableau.com/en-us/gallery/flow-human-migration)
-![Third Inspiration](./Resources/images/inspiration3.png)
-   <!-- - A sketch of the final design
-   - A link to the primary GitHub repository you’ll be housing your work in -->
+<!-- Sketch of the final design -->
+![Sketch Picture](https://github.com/toestie/travel-index/blob/master/Resources/images/sketch.jpg)
+
+<!-- A link to the primary GitHub repository you’ll be housing your work in -->
+   https://github.com/toestie/travel-index
