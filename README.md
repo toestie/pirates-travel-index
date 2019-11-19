@@ -15,6 +15,8 @@ The idea for this project is visualize tourism change for cities/countries over 
 * https://data.world/laurel/world-happiness-report-data
 * https://data.worldbank.org/indicator/ST.INT.ARVL
 * https://newsroom.mastercard.com/wp-content/uploads/2019/09/GDCI-Global-Report-FINAL-1.pdf
+* https://population.un.org/wup/Download/
+   * https://population.un.org/wup/Download/Files/WUP2018-F12-Cities_Over_300K.xls
 
 # Sketch of Final Design
 <!-- Sketch of the final design -->
