@@ -11,10 +11,10 @@ The idea for this project is visualize tourism change for cities/countries over 
 
 # Data Sources
 
-https://github.com/toestie/pirates-travel-index/tree/master/data
-https://data.world/laurel/world-happiness-report-data
-https://data.worldbank.org/indicator/ST.INT.ARVL
-https://newsroom.mastercard.com/wp-content/uploads/2019/09/GDCI-Global-Report-FINAL-1.pdf
+* https://github.com/toestie/pirates-travel-index/tree/master/data
+* https://data.world/laurel/world-happiness-report-data
+* https://data.worldbank.org/indicator/ST.INT.ARVL
+* https://newsroom.mastercard.com/wp-content/uploads/2019/09/GDCI-Global-Report-FINAL-1.pdf
 
 # Sketch of Final Design
 <!-- Sketch of the final design -->
