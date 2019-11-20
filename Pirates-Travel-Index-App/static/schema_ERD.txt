@@ -13,7 +13,7 @@ Overnight_International_Visitors_in_Millions FLOAT NULLABLE
 gdci_city_country
 --------------------
 City VARCHAR(255) PK
-Country VARCHAR(255) PK
+Country VARCHAR(255)
 
 un_city_population
 ---------------
