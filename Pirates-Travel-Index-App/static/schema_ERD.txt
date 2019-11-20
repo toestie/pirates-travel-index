@@ -1,0 +1,66 @@
+gdci_expenses
+--------
+City VARCHAR(255) PK FK >- gdci_city_country.City
+Year INTEGER PK
+Overnight_International_Visitor_Spend_in_USD_Billions FLOAT NULLABLE
+
+gdci_tourists
+--------
+City VARCHAR(255) PK FK >- gdci_city_country.City
+Year INTEGER PK
+Overnight_International_Visitors_in_Millions FLOAT NULLABLE
+
+gdci_city_country
+--------------------
+City VARCHAR(255) PK
+Country VARCHAR(255) PK
+
+un_city_population
+---------------
+Country_Code INTEGER PK
+Country VARCHAR(255)
+City_Code INTEGER PK
+City VARCHAR(255)
+Latitude FLOAT NULLABLE
+Longitude FLOAT NULLABLE
+Year INTEGER PK
+Population_in_Thousands FLOAT NULLABLE
+Interpolated BOOLEAN NULLABLE
+
+world_happiness_report_2017
+---------------------------
+Country VARCHAR(255) PK
+Happiness_Score FLOAT
+GDP_per_Capita FLOAT
+Social_Support FLOAT
+Healthy_Life_Expectency FLOAT
+Freedom_To_Make_Life_Choices FLOAT
+Genorosity FLOAT
+Perceptions_of_Corruption FLOAT
+
+world_bank_country_classification
+----------------------
+Country_Code CHAR(3) PK
+Region VARCHAR(255) NULLABLE
+Income_Group VARCHAR(255) NULLABLE
+Special_Notes VARCHAR(1500) NULLABLE
+Country VARCHAR(255)
+
+world_bank_indicator_code
+--------------
+Indicator_Code VARCHAR(255) PK
+Indicator_Name VARCHAR(255)
+Source_Note VARCHAR(1500) NULLABLE
+Source_Organization VARCHAR(255)
+
+world_bank_tourism
+------------------------
+Country VARCHAR(255)
+Country_Code CHAR(3) PK FK >- world_bank_country_classification.Country_Code
+Indicator_Name VARCHAR(255)
+Indicator_Code VARCHAR(255) FK >- world_bank_indicator_code.Indicator_Code
+Year INTEGER PK
+Arrivals FLOAT NULLABLE
+Departures FLOAT NULLABLE
+Receipts FLOAT NULLABLE
+Expenditures FLOAT NULLABLE
