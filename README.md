@@ -4,7 +4,7 @@
 * Hazel Despain : [@hazeldespain](https://github.com/hazeldespain)
 * Nathan Wong (Git Master) : [@toestie](https://github.com/toestie)
 
-![TouristBanner](./Resources/images/banner.jpg)
+![TouristBanner](./Pirates-Travel-Index-App/static/resources/images/banner.jpg)
 
 # Project Proposal
 The idea for this project is visualize tourism change for cities/countries over time. We will also test to see if there is a correlation between different indexes (ie happiness score, freedom score, and generosity score) and the cities' popularity with tourists. 
@@ -20,7 +20,7 @@ The idea for this project is visualize tourism change for cities/countries over 
 
 # Sketch of Final Design
 <!-- Sketch of the final design -->
-![Sketch Picture](https://github.com/toestie/travel-index/blob/master/Resources/images/sketch.jpg)
+![Sketch Picture](./Pirates-Travel-Index-App/static/resources/images/sketch.jpg)
 
 # Link to GitHub Repository
 <!-- A link to the primary GitHub repository you’ll be housing your work in -->
