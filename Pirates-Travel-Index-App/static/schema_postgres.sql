@@ -1,6 +1,7 @@
 ﻿-- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
 -- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
 
+
 CREATE TABLE "gdci_expenses" (
     "City" VARCHAR(255)   NOT NULL,
     "Year" INTEGER   NOT NULL,
@@ -26,12 +27,6 @@ CREATE TABLE "gdci_city_country" (
         "City"
      )
 );
-
-ALTER TABLE "gdci_expenses" ADD CONSTRAINT "fk_gdci_expenses_City" FOREIGN KEY("City")
-REFERENCES "gdci_city_country" ("City");
-
-ALTER TABLE "gdci_tourists" ADD CONSTRAINT "fk_gdci_tourists_City" FOREIGN KEY("City")
-REFERENCES "gdci_city_country" ("City");
 
 CREATE TABLE "un_city_population" (
     "Country_Code" INTEGER   NOT NULL,
@@ -86,8 +81,6 @@ CREATE TABLE "world_bank_indicator_code" (
 CREATE TABLE "world_bank_tourism" (
     "Country" VARCHAR(255)   NOT NULL,
     "Country_Code" CHAR(3)   NOT NULL,
-    "Indicator_Name" VARCHAR(255)   NOT NULL,
-    "Indicator_Code" VARCHAR(255)   NOT NULL,
     "Year" INTEGER   NOT NULL,
     "Arrivals" FLOAT   NULL,
     "Departures" FLOAT   NULL,
@@ -98,9 +91,12 @@ CREATE TABLE "world_bank_tourism" (
      )
 );
 
+ALTER TABLE "gdci_expenses" ADD CONSTRAINT "fk_gdci_expenses_City" FOREIGN KEY("City")
+REFERENCES "gdci_city_country" ("City");
+
+ALTER TABLE "gdci_tourists" ADD CONSTRAINT "fk_gdci_tourists_City" FOREIGN KEY("City")
+REFERENCES "gdci_city_country" ("City");
+
 ALTER TABLE "world_bank_tourism" ADD CONSTRAINT "fk_world_bank_tourism_Country_Code" FOREIGN KEY("Country_Code")
 REFERENCES "world_bank_country_classification" ("Country_Code");
-
-ALTER TABLE "world_bank_tourism" ADD CONSTRAINT "fk_world_bank_tourism_Indicator_Code" FOREIGN KEY("Indicator_Code")
-REFERENCES "world_bank_indicator_code" ("Indicator_Code");
 
