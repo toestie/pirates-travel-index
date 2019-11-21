@@ -57,8 +57,6 @@ world_bank_tourism
 ------------------------
 Country VARCHAR(255)
 Country_Code CHAR(3) PK FK >- world_bank_country_classification.Country_Code
-Indicator_Name VARCHAR(255)
-Indicator_Code VARCHAR(255) FK >- world_bank_indicator_code.Indicator_Code
 Year INTEGER PK
 Arrivals FLOAT NULLABLE
 Departures FLOAT NULLABLE
