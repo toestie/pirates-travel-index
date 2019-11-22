@@ -27,7 +27,7 @@ Year INTEGER PK
 Population_in_Thousands FLOAT NULLABLE
 Interpolated BOOLEAN NULLABLE
 
-world_happiness_report_2017
+world_happiness_report
 ---------------------------
 Country VARCHAR(255) PK
 Happiness_Score FLOAT
@@ -37,6 +37,8 @@ Healthy_Life_Expectency FLOAT
 Freedom_To_Make_Life_Choices FLOAT
 Genorosity FLOAT
 Perceptions_of_Corruption FLOAT
+Report_Year INTEGER PK
+Years_Averaged CHAR(9)
 
 world_bank_country_classification
 ----------------------
