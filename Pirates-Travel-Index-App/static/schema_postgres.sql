@@ -43,7 +43,7 @@ CREATE TABLE "un_city_population" (
      )
 );
 
-CREATE TABLE "world_happiness_report_2017" (
+CREATE TABLE "world_happiness_report" (
     "Country" VARCHAR(255)   NOT NULL,
     "Happiness_Score" FLOAT   NOT NULL,
     "GDP_per_Capita" FLOAT   NOT NULL,
@@ -52,8 +52,10 @@ CREATE TABLE "world_happiness_report_2017" (
     "Freedom_To_Make_Life_Choices" FLOAT   NOT NULL,
     "Genorosity" FLOAT   NOT NULL,
     "Perceptions_of_Corruption" FLOAT   NOT NULL,
-    CONSTRAINT "pk_world_happiness_report_2017" PRIMARY KEY (
-        "Country"
+    "Report_Year" INTEGER   NOT NULL,
+    "Years_Averaged" CHAR(9)   NOT NULL,
+    CONSTRAINT "pk_world_happiness_report" PRIMARY KEY (
+        "Country","Report_Year"
      )
 );
 
