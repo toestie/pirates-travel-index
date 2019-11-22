@@ -1,4 +1,4 @@
-Country_Name,Country_Code,Year,Arrivals_in_Thousands,Departures_in_Thousands,Expenditures_in_USD_Millions,Receipts_in_USD_Millions
+Country,Country_Code,Year,Arrivals_in_Thousands,Departures_in_Thousands,Expenditures_in_USD_Millions,Receipts_in_USD_Millions
 Aruba,ABW,1960,,,,
 Afghanistan,AFG,1960,,,,
 Angola,AGO,1960,,,,
