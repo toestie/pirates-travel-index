@@ -1,4 +1,4 @@
-﻿Country,Happiness score,GDP per capita,Social support,Healthy life expectancy,Freedom to make life choices,Generosity,Perceptions of corruption,Report Year,Years Averaged
+﻿Country,Happiness_Score,GDP_per_Capita,Social_Support,Healthy_Life_Expectancy,Freedom_to_Make_Life_Choices,Generosity,Perceptions_of_Corruption,Report_Year,Years_Averaged
 Norway,7.537,1.616,1.534,0.797,0.635,0.362,0.316,2017,2014-2016
 Denmark,7.522,1.482,1.551,0.793,0.626,0.355,0.401,2017,2014-2016
 Iceland,7.504,1.481,1.611,0.834,0.627,0.476,0.154,2017,2014-2016

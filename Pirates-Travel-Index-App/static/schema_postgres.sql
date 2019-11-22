@@ -48,9 +48,9 @@ CREATE TABLE "world_happiness_report" (
     "Happiness_Score" FLOAT   NOT NULL,
     "GDP_per_Capita" FLOAT   NOT NULL,
     "Social_Support" FLOAT   NOT NULL,
-    "Healthy_Life_Expectency" FLOAT   NOT NULL,
-    "Freedom_To_Make_Life_Choices" FLOAT   NOT NULL,
-    "Genorosity" FLOAT   NOT NULL,
+    "Healthy_Life_Expectancy" FLOAT   NOT NULL,
+    "Freedom_to_Make_Life_Choices" FLOAT   NOT NULL,
+    "Generosity" FLOAT   NOT NULL,
     "Perceptions_of_Corruption" FLOAT   NOT NULL,
     "Report_Year" INTEGER   NOT NULL,
     "Years_Averaged" CHAR(9)   NOT NULL,
@@ -84,10 +84,10 @@ CREATE TABLE "world_bank_tourism" (
     "Country" VARCHAR(255)   NOT NULL,
     "Country_Code" CHAR(3)   NOT NULL,
     "Year" INTEGER   NOT NULL,
-    "Arrivals" FLOAT   NULL,
-    "Departures" FLOAT   NULL,
-    "Receipts" FLOAT   NULL,
-    "Expenditures" FLOAT   NULL,
+    "Arrivals_in_Thousands" FLOAT   NULL,
+    "Departures_in_Thousands" FLOAT   NULL,
+    "Receipts_in_USD_Millions" FLOAT   NULL,
+    "Expenditures_in_USD_Millions" FLOAT   NULL,
     CONSTRAINT "pk_world_bank_tourism" PRIMARY KEY (
         "Country_Code","Year"
      )
