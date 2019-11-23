@@ -64,3 +64,5 @@ Arrivals_in_Thousands FLOAT NULLABLE
 Departures_in_Thousands FLOAT NULLABLE
 Receipts_in_USD_Millions FLOAT NULLABLE
 Expenditures_in_USD_Millions FLOAT NULLABLE
+Population_in_Thousands FLOAT NULLABLE
+

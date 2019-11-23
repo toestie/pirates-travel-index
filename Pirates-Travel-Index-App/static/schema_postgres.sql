@@ -74,7 +74,7 @@ CREATE TABLE "world_bank_indicator_code" (
     "Indicator_Code" VARCHAR(255)   NOT NULL,
     "Indicator_Name" VARCHAR(255)   NOT NULL,
     "Source_Note" VARCHAR(1500)   NULL,
-    "Source_Organization" VARCHAR(255)   NOT NULL,
+    "Source_Organization" VARCHAR(1000)   NULL,
     CONSTRAINT "pk_world_bank_indicator_code" PRIMARY KEY (
         "Indicator_Code"
      )
@@ -88,6 +88,7 @@ CREATE TABLE "world_bank_tourism" (
     "Departures_in_Thousands" FLOAT   NULL,
     "Receipts_in_USD_Millions" FLOAT   NULL,
     "Expenditures_in_USD_Millions" FLOAT   NULL,
+    "Population_in_Thousands" FLOAT   NULL,
     CONSTRAINT "pk_world_bank_tourism" PRIMARY KEY (
         "Country_Code","Year"
      )
