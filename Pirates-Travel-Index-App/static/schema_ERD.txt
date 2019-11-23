@@ -33,9 +33,9 @@ Country VARCHAR(255) PK
 Happiness_Score FLOAT
 GDP_per_Capita FLOAT
 Social_Support FLOAT
-Healthy_Life_Expectency FLOAT
-Freedom_To_Make_Life_Choices FLOAT
-Genorosity FLOAT
+Healthy_Life_Expectancy FLOAT
+Freedom_to_Make_Life_Choices FLOAT
+Generosity FLOAT
 Perceptions_of_Corruption FLOAT
 Report_Year INTEGER PK
 Years_Averaged CHAR(9)
@@ -60,7 +60,9 @@ world_bank_tourism
 Country VARCHAR(255)
 Country_Code CHAR(3) PK FK >- world_bank_country_classification.Country_Code
 Year INTEGER PK
-Arrivals FLOAT NULLABLE
-Departures FLOAT NULLABLE
-Receipts FLOAT NULLABLE
-Expenditures FLOAT NULLABLE
+Arrivals_in_Thousands FLOAT NULLABLE
+Departures_in_Thousands FLOAT NULLABLE
+Receipts_in_USD_Millions FLOAT NULLABLE
+Expenditures_in_USD_Millions FLOAT NULLABLE
+Population_in_Thousands FLOAT NULLABLE
+
