@@ -1,4 +1,4 @@
-Country Code,Country,City Code,City,Latitude,Longitude,Year,Population_in_Thousands,Interpolated
+Country_Code,Country,City_Code,City,Latitude,Longitude,Year,Population_in_Thousands,Interpolated
 4,Afghanistan,20001,Herat,34.34817,62.19967,1950,82.468,False
 4,Afghanistan,20001,Herat,34.34817,62.19967,1955,85.751,False
 4,Afghanistan,20001,Herat,34.34817,62.19967,1960,89.166,False
