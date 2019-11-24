@@ -1,1 +1,1 @@
-web: gunicorn Belly_Button_Diversity.app:app
+web: gunicorn Pirates-Travel-Index-App.app:app
