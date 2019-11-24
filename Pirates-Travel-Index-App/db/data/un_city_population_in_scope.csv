@@ -1,4 +1,4 @@
-Country Code,Country,City Code,City,Latitude,Longitude,Year,Population_in_Thousands,Interpolated
+Country_Code,Country,City_Code,City,Latitude,Longitude,Year,Population_in_Thousands,Interpolated
 36,Australia,206167,Sydney,-33.86785,151.20732,1950,1689.935,False
 36,Australia,206167,Sydney,-33.86785,151.20732,1955,1905.976,False
 36,Australia,206167,Sydney,-33.86785,151.20732,1960,2134.673,False
