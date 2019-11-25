@@ -13,3 +13,5 @@ six==1.11.0
 SQLAlchemy==1.2.10
 Werkzeug==0.15.3
 gunicorn==19.9.0
+psycopg2==2.8.3
+psycopg2-binary==2.8.3
