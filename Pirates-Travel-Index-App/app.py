@@ -1,7 +1,6 @@
 # pylint: skip-file
-import sys
-sys.path.append('./static/scripts')
-from config import dev_uri, test_uri, prod_uri
+import os
+ENV_URI = os.getenv('DATABASE_URL')
 
 import pandas as pd
 import numpy as np
@@ -20,7 +19,7 @@ app = Flask(__name__)
 # Database Setup
 #################################################
 
-app.config["SQLALCHEMY_DATABASE_URI"] = prod_uri
+app.config["SQLALCHEMY_DATABASE_URI"] = ENV_URI
 db = SQLAlchemy(app)
 
 # reflect an existing database into a new model
