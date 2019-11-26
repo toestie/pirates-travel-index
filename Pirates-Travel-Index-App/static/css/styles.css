@@ -1,0 +1,8 @@
+.navbar-custom { 
+    background-color: darkslategray; 
+} 
+
+.navbar-custom .navbar-brand, 
+.navbar-custom .navbar-text { 
+    color: goldenrod; 
+} 
