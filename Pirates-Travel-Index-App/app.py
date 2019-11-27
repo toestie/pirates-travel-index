@@ -124,6 +124,7 @@ def un_city_pop():
         
     return jsonify(results_list)
 
+
 @app.route("/tourism-ratio")
 def tourism_ratio():
     """Return all cities and their corresponding countries in the GDCI data"""
