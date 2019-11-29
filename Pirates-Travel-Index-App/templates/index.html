@@ -33,7 +33,7 @@
       </ul>
       <ul class="nav navbar-nav flex-row justify-content-md-center justify-content-start flex-nowrap">
           <li class="nav-item">
-            <img src="../static/resources/images/coinicon.svg" alt="coin" height="50" width="50">
+            <img src="../static/resources/images/coinicon.svg" alt="coin" height="50" width="50" onclick="document.getElementById('jingle').play()">
           </li>
       </ul>
     </div>
@@ -87,9 +87,10 @@
     </div>
   </div>
 
+  <audio id="jingle" src="../static/resources/audio/pirate-theme.mp3"></audio>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  <script src="../static/js/app.js"></script>
   <link rel="stylesheet" style="text/css" href="../static/css/styles.css">
 
 </body>
