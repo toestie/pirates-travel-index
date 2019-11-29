@@ -10,80 +10,84 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-custom">
-    <a class="navbar-brand" href="#">Navbar</a>
+  <nav class="navbar sticky-top navbar-expand-lg navbar-custom">
+    <a class="navbar-brand piratey" href="index.html">Pirates Travel Index</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <li class="nav-item">
+          <a class="nav-link" href="#">First</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <!-- <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
+          <a class="nav-link" href="#">Second</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          <a class="nav-link" href="#">Third</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Fourth</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form> -->
+      <ul class="nav navbar-nav flex-row justify-content-md-center justify-content-start flex-nowrap">
+          <li class="nav-item">
+            <img src="../static/resources/images/coinicon.svg" alt="coin" height="50" width="50">
+          </li>
+      </ul>
     </div>
   </nav>
   
   <div class="container">
-    <div class="row">
-      <div class="col-md-12 jumbotron text-center">
-        <h1>Pirates Travel Index</h1>
-        <p>Use the interactive charts below to explore the dataset</p>
+    <div class="col-md-12 jumbotron text-center">
+      <h1 class="piratey">Pirates Travel Index</h1>
+      <br>
+      <div class="descrip">
+          <p>
+            The idea for this project is visualize tourism change for cities/countries over time. We will
+            also test to see if there is a correlation between different indexes (i.e. happiness score,
+            freedom score, and generosity score) and the cities' popularity with tourists.
+          </p>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-2">
-        <div class="well">
-          <h5>SELECT Sample:</h5>
-          <select id="selDataset" onchange="optionChanged(this.value)"></select>
-        </div>
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">Sample MetaData</h3>
-          </div>
-          <div id="sample-metadata" class="panel-body"></div>
-        </div>
-      </div>
-      <div class="col-md-5">
-        <div id="pie"></div>
-      </div>
-      <div class="col-md-5">
-        <div id="gauge"></div>
+  </div>
+  <div class="parallax" style="background-image: url('../static/resources/images/banner.jpg');">
+  </div>
+  <div class="container">
+    <div class="col-md-12 jumbotron text-center">
+      <h1 class="piratey">Scurvy Visualizations</h1>
+      <br>
+      <div class="descrip">
+          <p>
+            Choose one to plunder!
+          </p>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12">
-      <div id="bubble"></div>
+    <div class="col-md-5 col-lg-3 text-center">
+      <button type="button" class="btn btn-outline-primary piratey">First</button>
+      <div id="first"></div>
+    </div>
+    <div class="col-md-5 col-lg-3 text-center">
+    <button type="button" class="btn btn-outline-primary piratey">Second</button>
+      <div id="second"></div>
+    </div>
+    <div class="col-md-5 col-lg-3 text-center">
+      <button type="button" class="btn btn-outline-primary piratey">Third</button>
+      <div id="third"></div>
+    </div>
+    <div class="col-md-5 col-lg-3 text-center">
+      <button type="button" class="btn btn-outline-primary piratey">Fourth</button>
+      <div id="fourth"></div>
     </div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="{{ url_for('static', filename='js/app.js') }}"></script>
-  <script src="{{ url_for('static', filename='css/styles.css') }}"></script>
+  <link rel="stylesheet" style="text/css" href="../static/css/styles.css">
 
 </body>
 
