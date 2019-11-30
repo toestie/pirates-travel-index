@@ -49,6 +49,10 @@ def maps():
     """Return the homepage."""
     return render_template("maps.html")
 
+@app.route("/patterns")
+def patterns():
+    """Return the homepage."""
+    return render_template("patterns.html")
 
 @app.route("/gdci-tourists")
 def tourists():

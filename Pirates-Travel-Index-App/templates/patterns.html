@@ -41,31 +41,15 @@
     </div>
   </nav>
   
-  <div class="container">
-    <div class="col-md-12">
-      <div class="jumbotron text-center">
-        <h1 class="piratey page-title">Pirates Travel Index</h1>
-        <br>
-        <div class="descrip">
-            <p class="page-desc">
-              The idea for this project is visualize tourism change for cities/countries over time. We will
-              also test to see if there is a correlation between different indexes (i.e. happiness score,
-              freedom score, and generosity score) and the cities' popularity with tourists.
-            </p>
-        </div>
-      </div>
-      <div class="current-plot"></div>
-    </div>
-  </div>
+  <div id="popularPatterns" align="center"></div>
+  <div id="happiness" style="width:800px; height:700px; margin:0 auto;" align="center"></div>
 
-  <div class="parallax" style="background-image: url('../static/resources/images/banner.jpg');">
-  </div>
-  
+  <script src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
   <audio id="jingle" src="../static/resources/audio/pirate-theme.mp3"></audio>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
   <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
   <script src="https://d3plus.org/js/d3plus-plot.v0.8.full.min.js"></script>
-  <!-- <script src="{{ url_for('static', filename='../static/js/app.js') }}"></script> -->
+  <script src="{{ url_for('static', filename='../static/js/patterns.js') }}"></script>
 
 </body>
 
