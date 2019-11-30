@@ -5,7 +5,10 @@ async function plotBump(url, html_id, title){
 
   let data = await d3.json(url);
 
-  // build the chart
+  //////////////////////////////////
+  // build the bump chart
+  /////////////////////////////////
+  
   let chart = new d3plus.BumpChart()
     .data(data)
     .select(html_id)
@@ -29,7 +32,10 @@ async function plotBump(url, html_id, title){
       }
   });
 
-  // format the chart
+  //////////////////////////////////
+  // format the bump chart
+  //////////////////////////////////
+
   chart
     .xConfig({
       title: "Years",

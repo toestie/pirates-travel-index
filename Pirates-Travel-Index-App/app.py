@@ -39,9 +39,15 @@ UN_City_Population                  = Base.classes.un_city_population
 
 
 @app.route("/")
-def index():
+def home():
     """Return the homepage."""
     return render_template("index.html")
+
+
+@app.route("/maps")
+def maps():
+    """Return the homepage."""
+    return render_template("maps.html")
 
 
 @app.route("/gdci-tourists")
