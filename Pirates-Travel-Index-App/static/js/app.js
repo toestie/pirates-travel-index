@@ -1,54 +1,98 @@
-async function getData(input_url) {
-
-  // Use `d3.json` to fetch the metadata for a sample
-  let data = await d3.json(input_url);
-
-  let year_2011 = []
-  let year_2012 = [];
-  let year_2013 = [];
-  let year_2014 = [];
-  let year_2015 = [];
-  let year_2016 = [];
-  let year_2017 = [];
-  let year_2018 = [];
-
-  data.forEach(function(d, i) {
-    if (d.Year == 2011) {
-      year_2011.push(d)
-    } else if (d.Year == 2012) {
-      year_2012.push(d)
-    } else if (d.Year == 2013) {
-      year_2013.push(d)
-    } else if (d.Year == 2014) {
-      year_2014.push(d)
-    } else if (d.Year == 2015) {
-      year_2015.push(d)
-    } else if (d.Year == 2016) {
-      year_2016.push(d)
-    } else if (d.Year == 2017) {
-      year_2017.push(d)
-    } else if (d.Year == 2018) {
-      year_2018.push(d)
-    }
-  });
-
-  console.log(year_2018)
-  
-}
-
-
-(function init() {
+(async function init() {
 
   const tourist_url = "/gdci-tourists";
   const expenses_url = "/gdci-expenses";
   const ratio_url = "/tourism-ratio";
-  getData(tourist_url);
-  getData(expenses_url);
-  getData(ratio_url);
+
+  let data = await d3.json(tourist_url);
+  console.table(data);
   
-  // Use the first sample from the list to build the initial plots
-  // const firstSample = sampleNames[0];
-  // buildCharts(firstSample);
-  // buildMetadata(firstSample);
+  let chart = new d3plus.BumpChart()
+    .data(data)
+    .select("#viz1")
+    .groupBy("City")
+    // .label(d => d.City)
+    .label(function(d) {
+      if (d.id == "circle"){
+        return String(d.Rank)
+      }
+      else {
+          return d.City;
+      }
+    })
+    .x("Year")
+    .y("Rank")
+    .shape(function(d) {
+      if (d.id === "line") {
+        return "Line";
+      }
+      else {
+        return "Circle";
+      }
+    });
+
+  chart
+    .xConfig({
+      title: "Years"
+    })
+    .yConfig({
+      title: "Ranking",
+      ticks: []
+    })
+    .y2Config({
+      ticks: []
+    })
+    .shapeConfig({
+      Line: {
+        strokeWidth: 5
+      }
+    })
+    .sizeMin(20)
+    .title("Top Number of Tourists Ranking")
+    .render()
+  ;
+
+
+    // let expenses_data = await d3.json(expenses_url);
+    // console.table(expenses_data);
+    
+    // new d3plus.BumpChart()
+    //   .data(expenses_data)
+    //   .select("#viz2")
+    //   .groupBy("City")
+    //   .label(function(d) {
+    //       return d.City;
+    //     })
+    //   .x("Year")
+    //   .y("Rank")
+    //   .xConfig({
+    //     title: "Years"
+    //   })
+    //   .yConfig({
+    //     title: "Ranking"
+    //   })
+    //   .title("Top Expenses Ranking")
+    //   .render();
+
+    // let ratio_data = await d3.json(ratio_url);
+    // console.table(ratio_data);
+    
+    // new d3plus.BumpChart()
+    //   .data(ratio_data)
+    //   .select("#viz3")
+    //   .groupBy("City")
+    //   .label(function(d) {
+    //       return d.City.toString();
+    //     })
+    //   .x("Year")
+    //   .y("Rank")
+    //   .xConfig({
+    //     title: "Years"
+    //   })
+    //   .yConfig({
+    //     title: "Ranking"
+    //   })
+    //   .title("Tourism Density Ranking")
+    //   .render();
 
 })()

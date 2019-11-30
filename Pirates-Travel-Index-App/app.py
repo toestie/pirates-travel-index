@@ -66,6 +66,16 @@ def tourists():
     df = pd.DataFrame(results_list).sort_values(["Year", "Visitors_in_Millions"], ascending=[True, False])
     df_top10 = df.groupby("Year").head(10).reset_index(drop=True)
     df_top10['Rank'] = df_top10.groupby('Year').cumcount()+1
+
+    df_top10_line = df_top10.copy()
+    df_top10_line["id"] = "line"
+
+    df_top10_circle = df_top10.copy()
+    df_top10_circle["id"] = "circle"
+
+    df_top10 = pd.concat([df_top10_line, df_top10_circle])
+    df_top10.sort_values(['Year', 'Rank', 'id']).reset_index(drop=True)
+
     top10_results = df_top10.to_dict('records')
         
     return jsonify(top10_results)
@@ -93,6 +103,16 @@ def expenses():
     df = pd.DataFrame(results_list).sort_values(["Year", "Expenses_in_USD_Billions"], ascending=[True, False])
     df_top10 = df.groupby("Year").head(10).reset_index(drop=True)
     df_top10['Rank'] = df_top10.groupby('Year').cumcount()+1
+
+    df_top10_line = df_top10.copy()
+    df_top10_line["id"] = "line"
+
+    df_top10_circle = df_top10.copy()
+    df_top10_circle["id"] = "circle"
+
+    df_top10 = pd.concat([df_top10_line, df_top10_circle])
+    df_top10.sort_values(['Year', 'Rank', 'id']).reset_index(drop=True)
+
     top10_results = df_top10.to_dict('records')
     
     return jsonify(top10_results)
@@ -175,6 +195,16 @@ def tourism_ratio():
     combined_df = combined_df.sort_values(["Year", "Tourist_Ratio_Index"], ascending=[True, False])
     combined_df = combined_df.groupby("Year").head(10).reset_index(drop=True)
     combined_df['Rank'] = combined_df.groupby('Year').cumcount()+1
+
+    combined_df_line = combined_df.copy()
+    combined_df_line["id"] = "line"
+
+    combined_df_circle = combined_df.copy()
+    combined_df_circle["id"] = "circle"
+
+    combined_df = pd.concat([combined_df_line, combined_df_circle])
+    combined_df.sort_values(['Year', 'Rank', 'id']).reset_index(drop=True)
+
     top10_results = combined_df.to_dict('records')
         
     return jsonify(top10_results)
