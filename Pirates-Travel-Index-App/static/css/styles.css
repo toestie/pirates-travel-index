@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css?family=Pirata+One&display=swap');
+
+.navbar-custom { 
+    background-color: #282828; 
+} 
+
+.navbar-custom .navbar-brand, 
+.navbar-custom .navbar-text { 
+    color: gold; 
+    font-weight: bold;
+} 
+
+.piratey {
+    font-family: "Pirata One";
+    color: goldenrod;
+}
+
+.descrip {
+    text-align: center;
+    width: 60%;
+    left: 50%;
+    margin-left: 20%;
+}
+
+h1 {
+    font-size: 4em;
+}
+
+a {
+    color: gold;
+}
+a:hover {
+    color: white;
+    background-color: goldenrod;
+    outline-color: gold;
+}
+
+.btn-outline-primary {
+    border-color: goldenrod;
+}
+.btn-outline-primary:hover {
+    color: white;
+    background-color: goldenrod;
+    border-color: goldenrod;
+}
+
+.jumbotron {
+    background: transparent;
+    padding-left: 0px;
+    padding-right: 0px;
+    background-size: cover;
+}
+
+.parallax {
+    position: relative;
+    height: 550px;
+    padding: 20px;
+    margin: 0;
+    background: black;
+    background-attachment: fixed;
+    background-position: bottom center;
+    background-size: cover;
+}

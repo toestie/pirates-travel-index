@@ -5,20 +5,92 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Flask Plotlyjs Example</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <title>Pirates Travel Index</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
+  
+  <nav class="navbar sticky-top navbar-expand-lg navbar-custom">
+    <a class="navbar-brand piratey" href="index.html">Pirates Travel Index</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">First</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Second</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Third</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Fourth</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav flex-row justify-content-md-center justify-content-start flex-nowrap">
+          <li class="nav-item">
+            <img src="../static/resources/images/coinicon.svg" alt="coin" height="50" width="50" onclick="document.getElementById('jingle').play()">
+          </li>
+      </ul>
+    </div>
+  </nav>
+  
+  <div class="container">
+    <div class="col-md-12">
+      <div class="jumbotron text-center">
+        <h1 class="piratey page-title">Pirates Travel Index</h1>
+        <br>
+        <div class="descrip">
+            <p class="page-desc">
+              The idea for this project is visualize tourism change for cities/countries over time. We will
+              also test to see if there is a correlation between different indexes (i.e. happiness score,
+              freedom score, and generosity score) and the cities' popularity with tourists.
+            </p>
+        </div>
+      </div>
+      <div class="current-plot"></div>
+    </div>
+  </div>
+  <div class="parallax" style="background-image: url('../static/resources/images/banner.jpg');">
+  </div>
+  <div class="container">
+    <div class="col-md-12 jumbotron text-center">
+      <h1 class="piratey">Scurvy Visualizations</h1>
+      <br>
+      <div class="descrip">
+          <p>
+            Choose one to plunder!
+          </p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5 col-lg-3 text-center">
+      <button type="button" class="btn btn-outline-primary piratey">First</button>
+      <div id="first"></div>
+    </div>
+    <div class="col-md-5 col-lg-3 text-center">
+    <button type="button" class="btn btn-outline-primary piratey">Second</button>
+      <div id="second"></div>
+    </div>
+    <div class="col-md-5 col-lg-3 text-center">
+      <button type="button" class="btn btn-outline-primary piratey">Third</button>
+      <div id="third"></div>
+    </div>
+    <div class="col-md-5 col-lg-3 text-center">
+      <button type="button" class="btn btn-outline-primary piratey">Fourth</button>
+      <div id="fourth"></div>
+    </div>
+  </div>
 
-  <div id="viz1"></div>
-
-  <div id="viz2"></div>
-
-  <div id="viz3"></div>
-
+  <audio id="jingle" src="../static/resources/audio/pirate-theme.mp3"></audio>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
-  <!-- <script src="http://www.d3plus.org/js/d3.js"></script> -->
+  <link rel="stylesheet" style="text/css" href="../static/css/styles.css">
   <script src="https://d3plus.org/js/d3plus-plot.v0.8.full.min.js"></script>
   <script src="{{ url_for('static', filename='../static/js/app.js') }}"></script>
 
