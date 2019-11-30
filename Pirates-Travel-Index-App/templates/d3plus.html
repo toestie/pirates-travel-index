@@ -1,0 +1,61 @@
+<!doctype html>
+<meta charset="utf-8">
+
+<!-- load D3js -->
+<script src="http://www.d3plus.org/js/d3.js"></script>
+
+<!-- load D3plus after D3js -->
+<script src="https://d3plus.org/js/d3plus-plot.v0.8.full.min.js"></script>
+
+<!-- create container element for visualization -->
+<div id="viz"></div>
+
+<script>
+var data = [
+  {id: "alpha", time: 4, value: 240},
+  {id: "beta", time: 5, value: 120},
+  {id: "gamma", time: 6, value: 180},
+  {id: "delta", time: 4, value: 240},
+  {id: "delta", time: 5, value: 120},
+  {id: "delta", time: 6, value: 180}
+];
+
+var chart = new d3plus.Plot()
+  .data(data)
+  .groupBy("id")
+  .x("time")
+  .y("value")
+  .label(function(d) {
+      if (d.id !== "delta"){
+        return String(d.value)
+      }
+      else {
+          return "Line";
+      }
+  })
+
+chart
+  .shape(function(d) {
+    if (d.id === "delta") {
+      return "Line";
+    }
+    else {
+      return "Circle";
+    }
+  });
+
+var order = ["Line", "Circle"];
+
+chart
+  .shapeConfig({
+    Line: {
+      strokeWidth: 5
+    }
+  })
+  .shapeSort(function(a, b) {
+    return order.indexOf(a) - order.indexOf(b);
+  })
+  .sizeMin(50)
+  .render();
+
+</script>

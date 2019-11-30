@@ -10,6 +10,7 @@
 </head>
 
 <body>
+  
   <nav class="navbar sticky-top navbar-expand-lg navbar-custom">
     <a class="navbar-brand piratey" href="index.html">Pirates Travel Index</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -89,9 +90,9 @@
 
   <audio id="jingle" src="../static/resources/audio/pirate-theme.mp3"></audio>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="../static/js/app.js"></script>
   <link rel="stylesheet" style="text/css" href="../static/css/styles.css">
+  <script src="https://d3plus.org/js/d3plus-plot.v0.8.full.min.js"></script>
+  <script src="{{ url_for('static', filename='../static/js/app.js') }}"></script>
 
 </body>
 
