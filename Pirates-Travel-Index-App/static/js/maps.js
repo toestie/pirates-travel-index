@@ -1,9 +1,9 @@
 (function mapViz() {
   let cityMapcontainer = document.getElementById("cityMapStory");
-  let cityMapurl = "http://public.tableau.com/views/VisitorsandExpensesScatter/StorySummary";
+  let cityMapurl = "https://public.tableau.com/views/VisitorsandExpensesScatter/StorySummary";
 
   let incomeContainer = document.getElementById("incomeMap");
-  let incomeurl = "http://public.tableau.com/views/TourismandHappinessReportData/IncomeGroupbyCountry";
+  let incomeurl = "https://public.tableau.com/views/TourismandHappinessReportData/IncomeGroupbyCountry";
 
   let options = {
       hideTabs: true
