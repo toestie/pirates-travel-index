@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <title>Pirates Travel Index</title>
+  <title>Pirates Travel Index - Rankings</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
@@ -30,7 +30,7 @@
           <a class="nav-link" href="/rankings">Rankings</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Fourth</a>
+          <a class="nav-link" href="/density">Density</a>
         </li>
       </ul>
       <ul class="nav navbar-nav flex-row justify-content-md-center justify-content-start flex-nowrap">
@@ -41,6 +41,7 @@
     </div>
   </nav>
   
+  <br>
   <div id="tourismRankings" style="width:1000px; height:700px; margin:0 auto;" align="center"></div>
   <br>
   <div id="expensesRankings" style="width:1200px; height:700px; margin:0 auto;" align="center"></div>
@@ -50,6 +51,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
   <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
   <script src="https://d3plus.org/js/d3plus-plot.v0.8.full.min.js"></script>
+  <script src="{{ url_for('static', filename='../static/js/functions.js') }}"></script>
   <script src="{{ url_for('static', filename='../static/js/rankings.js') }}"></script>
 
 </body>

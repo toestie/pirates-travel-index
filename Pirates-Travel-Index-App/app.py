@@ -58,6 +58,10 @@ def rankings():
     """Return the rankings page."""
     return render_template("rankings.html")
 
+@app.route("/density")
+def density():
+    """Return the tourism density page."""
+    return render_template("tourism_density.html")
 
 @app.route("/gdci-tourists")
 def tourists():
