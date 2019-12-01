@@ -71,7 +71,7 @@ async function plotBump(url, html_id, title){
 
 }
 
-(function init() {
+(function rankings() {
 
   // endpoints to get data from
   const tourist_url   = "/gdci-tourists";
@@ -79,8 +79,8 @@ async function plotBump(url, html_id, title){
   const ratio_url     = "/tourism-ratio";
 
   // bump charts to plot
-  plotBump(tourist_url, "#viz1", "Top Number of Tourists Ranking");
-  plotBump(expenses_url, "#viz2", "Top Number of Tourist Expenses Ranking");
+  plotBump(tourist_url, "#tourismRankings", "Top Number of Tourists Ranking");
+  plotBump(expenses_url, "#expensesRankings", "Top Number of Tourist Expenses Ranking");
   // plotBump(ratio_url, "#viz3", "Tourism Density Ranking");
 
 })()
