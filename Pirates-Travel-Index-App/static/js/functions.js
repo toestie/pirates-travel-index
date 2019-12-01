@@ -1,4 +1,6 @@
 function getColor(city) {
+  // returns color for each bump chart line
+  // depending on city name to have it be fixed
   if (city == "Amsterdam") {
     return "#000000";
   } else if (city == "Antalya") {

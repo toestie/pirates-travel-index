@@ -1,4 +1,5 @@
 (function mapViz() {
+  
   let cityMapcontainer = document.getElementById("cityMapStory");
   let cityMapurl = "https://public.tableau.com/views/VisitorsandExpensesScatter/StorySummary";
 
