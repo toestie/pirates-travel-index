@@ -37,6 +37,9 @@ World_Bank_Indicator_Code           = Base.classes.world_bank_indicator_code
 World_Happiness_Report              = Base.classes.world_happiness_report
 UN_City_Population                  = Base.classes.un_city_population
 
+#############################################
+# routes to render webpages                 #
+#############################################
 
 @app.route("/")
 def home():
@@ -63,9 +66,14 @@ def density():
     """Return the tourism density page."""
     return render_template("tourism_density.html")
 
+
+#############################################
+# routes to retrieve and return data        #
+#############################################
+
 @app.route("/gdci-tourists")
 def tourists():
-    """Return all cities and their corresponding countries in the GDCI data"""
+    """Return the top 10 cities and total tourist count over the years in the GDCI data"""
     results_list = []
     all_columns = [ 
                     GDCI_Tourists.City, 
@@ -82,10 +90,12 @@ def tourists():
         results_dict["Visitors_in_Millions"] = result[2]
         results_list.append(results_dict)
 
+    # get top 10 values only
     df = pd.DataFrame(results_list).sort_values(["Year", "Visitors_in_Millions"], ascending=[True, False])
     df_top10 = df.groupby("Year").head(10).reset_index(drop=True)
     df_top10['Rank'] = df_top10.groupby('Year').cumcount()+1
 
+    # repeat data set to plot both line and circles in bump chart
     df_top10_line = df_top10.copy()
     df_top10_line["id"] = "line"
 
@@ -102,7 +112,7 @@ def tourists():
 
 @app.route("/gdci-expenses")
 def expenses():
-    """Return all cities and their corresponding countries in the GDCI data"""
+    """Return the top 10 cities and total expenditures over the years in the GDCI data"""
     results_list = []
     all_columns = [ 
                     GDCI_Expenses.City, 
@@ -119,10 +129,12 @@ def expenses():
         results_dict["Expenses_in_USD_Billions"] = result[2]
         results_list.append(results_dict)
         
+    # get top 10 values only
     df = pd.DataFrame(results_list).sort_values(["Year", "Expenses_in_USD_Billions"], ascending=[True, False])
     df_top10 = df.groupby("Year").head(10).reset_index(drop=True)
     df_top10['Rank'] = df_top10.groupby('Year').cumcount()+1
 
+    # repeat data set to plot both line and circles in bump chart
     df_top10_line = df_top10.copy()
     df_top10_line["id"] = "line"
 
@@ -139,7 +151,7 @@ def expenses():
 
 @app.route("/un_city_population")
 def un_city_pop():
-    """Return all cities and their corresponding countries in the GDCI data"""
+    """Return all cities and their populations from the UN report"""
     results_list = []
     all_columns =   [ 
                         UN_City_Population.Country, 
@@ -166,7 +178,9 @@ def un_city_pop():
 
 @app.route("/tourism-ratio")
 def tourism_ratio():
-    """Return all cities and their corresponding countries in the GDCI data"""
+    """Return the top 10 tourist-to-population ratios"""
+
+    # get the UN city population counts
     un_results_list = []
     un_city_columns =   [ 
                         UN_City_Population.Country, 
@@ -186,11 +200,12 @@ def tourism_ratio():
         
         un_results_list.append(results_dict)
 
+    # convert to millions to have correct ratio
     un_df = pd.DataFrame(un_results_list)
     un_df["Population_in_Thousands"] = un_df["Population_in_Thousands"] / 1000
     un_df = un_df.rename(columns={"Population_in_Thousands": "Population_in_Millions"})
 
-    """Return all cities and their corresponding countries in the GDCI data"""
+    # get the GDCI tourist counts
     gdci_results_list = []
     gdci_columns = [ 
                     GDCI_Tourists.City, 
@@ -209,6 +224,7 @@ def tourism_ratio():
 
     gdci_df = pd.DataFrame(gdci_results_list)
 
+    # join data and then calculate tourism density index to return top 10 values
     combined_df = gdci_df.merge(right=un_df, how="inner", on=["City", "Year"])
     combined_df["Tourist_Ratio_Index"] = combined_df["Visitors_in_Millions"] / combined_df["Population_in_Millions"]
     combined_df = combined_df.sort_values(["Year", "Tourist_Ratio_Index"], ascending=[True, False])
@@ -227,6 +243,7 @@ def tourism_ratio():
     top10_results = combined_df.to_dict('records')
         
     return jsonify(top10_results)
+
 
 if __name__ == "__main__":
     app.run()
