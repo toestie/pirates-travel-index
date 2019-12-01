@@ -28,8 +28,8 @@ Base = automap_base()
 Base.prepare(db.engine, reflect=True)
 
 # Save references to each table
-GDCI_Expenses                       = Base.classes.gdci_expenses
 GDCI_Tourists                       = Base.classes.gdci_tourists
+GDCI_Expenses                       = Base.classes.gdci_expenses
 GDCI_City_Country                   = Base.classes.gdci_city_country
 World_Bank_Tourism                  = Base.classes.world_bank_tourism
 World_Bank_Country_Classification   = Base.classes.world_bank_country_classification
@@ -39,18 +39,34 @@ UN_City_Population                  = Base.classes.un_city_population
 
 
 @app.route("/")
-def index():
+def home():
     """Return the homepage."""
     return render_template("index.html")
 
+@app.route("/maps")
+def maps():
+    """Return the maps page."""
+    return render_template("maps.html")
 
-@app.route("/gdci-city-country")
-def city_country():
+@app.route("/patterns")
+def patterns():
+    """Return the patterns page."""
+    return render_template("patterns.html")
+
+@app.route("/rankings")
+def rankings():
+    """Return the rankings page."""
+    return render_template("rankings.html")
+
+
+@app.route("/gdci-tourists")
+def tourists():
     """Return all cities and their corresponding countries in the GDCI data"""
     results_list = []
     all_columns = [ 
-                    GDCI_City_Country.City, 
-                    GDCI_City_Country.Country
+                    GDCI_Tourists.City, 
+                    GDCI_Tourists.Year, 
+                    GDCI_Tourists.Overnight_International_Visitors_in_Millions
                   ]
 
     results = db.session.query(*all_columns).all()
@@ -58,10 +74,26 @@ def city_country():
     for result in results:
         results_dict = {}
         results_dict["City"] = result[0]
-        results_dict["Country"] = result[1]
+        results_dict["Year"] = result[1]
+        results_dict["Visitors_in_Millions"] = result[2]
         results_list.append(results_dict)
 
-    return jsonify(results_list)
+    df = pd.DataFrame(results_list).sort_values(["Year", "Visitors_in_Millions"], ascending=[True, False])
+    df_top10 = df.groupby("Year").head(10).reset_index(drop=True)
+    df_top10['Rank'] = df_top10.groupby('Year').cumcount()+1
+
+    df_top10_line = df_top10.copy()
+    df_top10_line["id"] = "line"
+
+    df_top10_circle = df_top10.copy()
+    df_top10_circle["id"] = "circle"
+
+    df_top10 = pd.concat([df_top10_line, df_top10_circle])
+    df_top10.sort_values(['Year', 'Rank', 'id']).reset_index(drop=True)
+
+    top10_results = df_top10.to_dict('records')
+        
+    return jsonify(top10_results)
 
 
 @app.route("/gdci-expenses")
@@ -83,163 +115,31 @@ def expenses():
         results_dict["Expenses_in_USD_Billions"] = result[2]
         results_list.append(results_dict)
         
-    return jsonify(results_list)
+    df = pd.DataFrame(results_list).sort_values(["Year", "Expenses_in_USD_Billions"], ascending=[True, False])
+    df_top10 = df.groupby("Year").head(10).reset_index(drop=True)
+    df_top10['Rank'] = df_top10.groupby('Year').cumcount()+1
 
+    df_top10_line = df_top10.copy()
+    df_top10_line["id"] = "line"
 
-@app.route("/gdci-tourists")
-def tourists():
-    """Return all cities and their corresponding countries in the GDCI data"""
-    results_list = []
-    all_columns = [ 
-                    GDCI_Tourists.City, 
-                    GDCI_Tourists.Year, 
-                    GDCI_Tourists.Overnight_International_Visitors_in_Millions
-                  ]
+    df_top10_circle = df_top10.copy()
+    df_top10_circle["id"] = "circle"
 
-    results = db.session.query(*all_columns).all()
+    df_top10 = pd.concat([df_top10_line, df_top10_circle])
+    df_top10.sort_values(['Year', 'Rank', 'id']).reset_index(drop=True)
 
-    for result in results:
-        results_dict = {}
-        results_dict["City"] = result[0]
-        results_dict["Year"] = result[1]
-        results_dict["Visitors_in_Millions"] = result[2]
-        results_list.append(results_dict)
-        
-    return jsonify(results_list)
+    top10_results = df_top10.to_dict('records')
+    
+    return jsonify(top10_results)
 
-
-@app.route("/world-bank-tourism")
-def world_bank_tourists():
-    """Return all cities and their corresponding countries in the GDCI data"""
-    results_list = []
-    all_columns =   [ 
-                        World_Bank_Tourism.Country, 
-                        World_Bank_Tourism.Country_Code, 
-                        World_Bank_Tourism.Year, 
-                        World_Bank_Tourism.Arrivals_in_Thousands, 
-                        World_Bank_Tourism.Departures_in_Thousands, 
-                        World_Bank_Tourism.Receipts_in_USD_Millions, 
-                        World_Bank_Tourism.Expenditures_in_USD_Millions, 
-                        World_Bank_Tourism.Population_in_Thousands
-                    ]
-
-    results = db.session.query(*all_columns).all()
-
-    for result in results:
-        results_dict = {}
-        results_dict["Country"]                         = result[0]
-        results_dict["Country_Code"]                    = result[1]
-        results_dict["Year"]                            = result[2]
-        results_dict["Arrivals_in_Thousands"]           = result[3]
-        results_dict["Departures_in_Thousands"]         = result[4]
-        results_dict["Receipts_in_USD_Millions"]        = result[5]
-        results_dict["Expenditures_in_USD_Millions"]    = result[6]
-        results_dict["Population_in_Thousands"]         = result[7]
-        
-        results_list.append(results_dict)
-        
-    return jsonify(results_list)
-
-
-@app.route("/world-bank-country")
-def world_bank_country():
-    """Return all cities and their corresponding countries in the GDCI data"""
-    results_list = []
-    all_columns =   [ 
-                        World_Bank_Country_Classification.Country_Code,
-                        World_Bank_Country_Classification.Country, 
-                        World_Bank_Country_Classification.Region, 
-                        World_Bank_Country_Classification.Income_Group, 
-                        World_Bank_Country_Classification.Special_Notes
-                    ]
-
-    results = db.session.query(*all_columns).all()
-
-    for result in results:
-        results_dict = {}
-        results_dict["Country_Code"]    = result[0]
-        results_dict["Country"]         = result[1]
-        results_dict["Region"]          = result[2]
-        results_dict["Income_Group"]    = result[3]
-        results_dict["Special_Notes"]   = result[4]
-        
-        results_list.append(results_dict)
-        
-    return jsonify(results_list)
-
-
-@app.route("/world-bank-indicator")
-def world_bank_indicator():
-    """Return all cities and their corresponding countries in the GDCI data"""
-    results_list = []
-    all_columns =   [ 
-                        World_Bank_Indicator_Code.Indicator_Code,
-                        World_Bank_Indicator_Code.Indicator_Name, 
-                        World_Bank_Indicator_Code.Source_Note, 
-                        World_Bank_Indicator_Code.Source_Organization
-                    ]
-
-    results = db.session.query(*all_columns).all()
-
-    for result in results:
-        results_dict = {}
-        results_dict["Indicator_Code"]      = result[0]
-        results_dict["Indicator_Name"]      = result[1]
-        results_dict["Source_Note"]         = result[2]
-        results_dict["Source_Organization"] = result[3]
-        
-        results_list.append(results_dict)
-        
-    return jsonify(results_list)
-
-
-@app.route("/world-happiness")
-def world_happiness():
-    """Return all cities and their corresponding countries in the GDCI data"""
-    results_list = []
-    all_columns =   [ 
-                        World_Happiness_Report.Country, 
-                        World_Happiness_Report.Happiness_Score, 
-                        World_Happiness_Report.GDP_per_Capita, 
-                        World_Happiness_Report.Social_Support, 
-                        World_Happiness_Report.Healthy_Life_Expectancy, 
-                        World_Happiness_Report.Freedom_to_Make_Life_Choices, 
-                        World_Happiness_Report.Generosity, 
-                        World_Happiness_Report.Perceptions_of_Corruption,
-                        World_Happiness_Report.Report_Year,
-                        World_Happiness_Report.Years_Averaged
-                    ]
-
-    results = db.session.query(*all_columns).all()
-
-    for result in results:
-        results_dict = {}
-        results_dict["Country"]                         = result[0]
-        results_dict["Happiness_Score"]                 = result[1]
-        results_dict["GDP_per_Capita"]                  = result[2]
-        results_dict["Social_Support"]                  = result[3]
-        results_dict["Healthy_Life_Expectancy"]         = result[4]
-        results_dict["Freedom_to_Make_Life_Choices"]    = result[5]
-        results_dict["Generosity"]                      = result[6]
-        results_dict["Perceptions_of_Corruption"]       = result[7]
-        results_dict["Report_Year"]                     = result[8]
-        results_dict["Years_Averaged"]                  = result[9]
-        
-        results_list.append(results_dict)
-        
-    return jsonify(results_list)
 
 @app.route("/un_city_population")
 def un_city_pop():
     """Return all cities and their corresponding countries in the GDCI data"""
     results_list = []
     all_columns =   [ 
-                        UN_City_Population.Country_Code, 
                         UN_City_Population.Country, 
-                        UN_City_Population.City_Code, 
                         UN_City_Population.City, 
-                        UN_City_Population.Latitude, 
-                        UN_City_Population.Longitude, 
                         UN_City_Population.Year, 
                         UN_City_Population.Population_in_Thousands,
                         UN_City_Population.Interpolated
@@ -249,20 +149,80 @@ def un_city_pop():
 
     for result in results:
         results_dict = {}
-        results_dict["Country_Code"]            = result[0]
-        results_dict["Country"]                 = result[1]
-        results_dict["City_Code"]               = result[2]
-        results_dict["City"]                    = result[3]
-        results_dict["Latitude"]                = result[4]
-        results_dict["Longitude"]               = result[5]
-        results_dict["Year"]                    = result[6]
-        results_dict["Population_in_Thousands"] = result[7]
-        results_dict["Interpolated"]            = result[8]
+        results_dict["Country"]                 = result[0]
+        results_dict["City"]                    = result[1]
+        results_dict["Year"]                    = result[2]
+        results_dict["Population_in_Thousands"] = result[3]
+        results_dict["Interpolated"]            = result[4]
         
         results_list.append(results_dict)
         
     return jsonify(results_list)
 
+
+@app.route("/tourism-ratio")
+def tourism_ratio():
+    """Return all cities and their corresponding countries in the GDCI data"""
+    un_results_list = []
+    un_city_columns =   [ 
+                        UN_City_Population.Country, 
+                        UN_City_Population.City, 
+                        UN_City_Population.Year, 
+                        UN_City_Population.Population_in_Thousands,
+                    ]
+
+    un_results = db.session.query(*un_city_columns).all()
+
+    for result in un_results:
+        results_dict = {}
+        results_dict["Country"]                 = result[0]
+        results_dict["City"]                    = result[1]
+        results_dict["Year"]                    = result[2]
+        results_dict["Population_in_Thousands"] = result[3]
+        
+        un_results_list.append(results_dict)
+
+    un_df = pd.DataFrame(un_results_list)
+    un_df["Population_in_Thousands"] = un_df["Population_in_Thousands"] / 1000
+    un_df = un_df.rename(columns={"Population_in_Thousands": "Population_in_Millions"})
+
+    """Return all cities and their corresponding countries in the GDCI data"""
+    gdci_results_list = []
+    gdci_columns = [ 
+                    GDCI_Tourists.City, 
+                    GDCI_Tourists.Year, 
+                    GDCI_Tourists.Overnight_International_Visitors_in_Millions
+                  ]
+
+    gdci_results = db.session.query(*gdci_columns).all()
+
+    for result in gdci_results:
+        results_dict = {}
+        results_dict["City"] = result[0]
+        results_dict["Year"] = result[1]
+        results_dict["Visitors_in_Millions"] = result[2]
+        gdci_results_list.append(results_dict)
+
+    gdci_df = pd.DataFrame(gdci_results_list)
+
+    combined_df = gdci_df.merge(right=un_df, how="inner", on=["City", "Year"])
+    combined_df["Tourist_Ratio_Index"] = combined_df["Visitors_in_Millions"] / combined_df["Population_in_Millions"]
+    combined_df = combined_df.sort_values(["Year", "Tourist_Ratio_Index"], ascending=[True, False])
+    combined_df = combined_df.groupby("Year").head(10).reset_index(drop=True)
+    combined_df['Rank'] = combined_df.groupby('Year').cumcount()+1
+
+    combined_df_line = combined_df.copy()
+    combined_df_line["id"] = "line"
+
+    combined_df_circle = combined_df.copy()
+    combined_df_circle["id"] = "circle"
+
+    combined_df = pd.concat([combined_df_line, combined_df_circle])
+    combined_df.sort_values(['Year', 'Rank', 'id']).reset_index(drop=True)
+
+    top10_results = combined_df.to_dict('records')
+        
+    return jsonify(top10_results)
 
 if __name__ == "__main__":
     app.run()
