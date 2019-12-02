@@ -4,7 +4,7 @@
   const ratio_url = "/tourism-ratio";
 
   // bump chart to plot
-  plotBump(ratio_url, "#densityRankings", "Tourism Density Ranking");
+  plotBump(ratio_url, "#densityRankings", "Top 10 Tourism Density Ranking");
 
   // Tableau chart
   let tableauContainer = document.getElementById("tableauDensity");
