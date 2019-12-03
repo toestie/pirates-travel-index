@@ -26,3 +26,6 @@ Link to Github repo: https://github.com/toestie/travel-index
 # Sketch of Final Design
 <!-- Sketch of the final design -->
 ![Sketch Picture](./Pirates-Travel-Index-App/static/resources/images/sketch.jpg)
+
+# Special Note
+Please note that this project requires a URI string to be saved locally in the .bash_profile or as a config variable in Heroku as 'DATABASE_URL'.
