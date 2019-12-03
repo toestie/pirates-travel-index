@@ -29,7 +29,7 @@ h1 {
 a {
     color: gold;
 }
-a:hover {
+a:hover:not(.footer-octicon) {
     color: white;
     background-color: goldenrod;
     outline-color: gold;
@@ -60,4 +60,10 @@ a:hover {
     background-attachment: fixed;
     background-position: bottom center;
     background-size: cover;
+}
+
+.octicon{
+    display: inline-block;
+    vertical-align: text-top;
+    fill: currentColor
 }
