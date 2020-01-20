@@ -64,6 +64,10 @@ a:hover:not(.footer-octicon) {
 
 .octicon{
     display: inline-block;
-    vertical-align: text-top;
-    fill: currentColor
+    vertical-align: text-top; 
+    fill: goldenrod
+}
+  
+.octicon:hover{
+    fill: lightgrey
 }
