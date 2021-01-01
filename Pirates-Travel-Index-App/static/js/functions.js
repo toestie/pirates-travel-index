@@ -61,22 +61,22 @@ async function plotBump(url, html_id, title){
     .select(html_id)
     .groupBy("City")
     .label(function(d) {
-      if (d.id == "circle"){
-        return String(d.Rank)
-      }
-      else {
-        return d.City;
-      }
+      // if (d.id === "circle"){
+        // return String(d.Rank)
+      // }
+      // else {
+        return d.City.concat("-").concat(d.Rank/2);
+      // }
     })
     .x("Year")
     .y("Rank")
     .shape(function(d) {
-      if (d.id === "line") {
+      // if (d.id === "line") {
         return "Line";
-      }
-      else {
-        return "Circle";
-      }
+      // }
+      // else {
+      //   return "Circle";
+      // }
     })
     .shapeConfig({
       Line: {
@@ -85,12 +85,12 @@ async function plotBump(url, html_id, title){
           return getColor(d.City);
         }
       },
-      Circle: {
-        r: 17,
-        fill: function(d) {
-          return getColor(d.City);
-        }
-      },
+      // Circle: {
+      //   r: 17,
+      //   fill: function(d) {
+      //     return getColor(d.City);
+      //   }
+      // },
       labelConfig: {
         fontMin: 11,
         fontColor: "white"
@@ -109,13 +109,13 @@ async function plotBump(url, html_id, title){
     })
     .yConfig({
       title: "Ranking",
-      tickSize: 35,
-      ticks: []
+      // tickSize: 35,
+      // ticks: []
     })
-    .y2Config({
-      tickSize: 35,
-      ticks: []
-    })
+    // .y2Config({
+    //   tickSize: 35,
+    //   ticks: []
+    // })
     .title(title)
     .titleConfig({
       fontSize: 20
